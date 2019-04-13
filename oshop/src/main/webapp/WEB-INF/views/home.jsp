@@ -42,7 +42,7 @@
 							<li><a
 								href="${pageContext.request.contextPath}/manageProduct">Manage
 									Products</a></li>
-							<li><a href="login">Logout</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">Logout</a></li>
 						</ul></li>
 				</ul>
 			</div>

@@ -1,6 +1,7 @@
 Oshop Table creation Query:
 **************************
 
+
 CREATE DATABASE  IF NOT EXISTS `test_oshop`;
 USE `test_oshop`;
 
