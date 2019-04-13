@@ -1,0 +1,72 @@
+Oshop Table creation Query:
+**************************
+
+CREATE DATABASE  IF NOT EXISTS `test_oshop`;
+USE `test_oshop`;
+
+--
+-- Table structure for table `student`
+--
+
+************************
+USE test_oshop;
+
+DROP TABLE IF EXISTS `products`;
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `price` decimal DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL,
+  `imageurl` varchar(5000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+*********************************************
+USE test_oshop;
+
+DROP TABLE IF EXISTS `categories`;
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+**********************************************
+
+USE test_oshop;
+
+DROP TABLE IF EXISTS `shoppingcart`;
+
+CREATE TABLE `shoppingcart` (
+  `shoppingcart_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `quantity` int(11) NOT NULL,
+  `price` varchar(20) NOT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  `id` int not null,
+  FOREIGN KEY fk_id(id) REFERENCES test_oshop.products(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+*************************************************
+USE test_oshop;
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE  TABLE users (
+username VARCHAR(45) NOT NULL ,
+password VARCHAR(45) NOT NULL ,
+enabled TINYINT NOT NULL DEFAULT 1 ,
+PRIMARY KEY (username));
+  
+DROP TABLE IF EXISTS `user_roles`;
+  
+CREATE TABLE user_roles (
+user_role_id int(11) NOT NULL AUTO_INCREMENT,
+username varchar(45) NOT NULL,
+role varchar(45) NOT NULL,
+PRIMARY KEY (user_role_id),
+UNIQUE KEY uni_username_role (role,username),
+KEY fk_username_idx (username),
+CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
